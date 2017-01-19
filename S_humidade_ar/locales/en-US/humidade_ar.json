@@ -1,0 +1,22 @@
+{
+  "humidade_ar": {
+    "message1": "This is my first message",
+    "message2": "This is my second message"
+  },
+  "common": {
+    "status": {
+      "connected": "connected",
+      "disconnected": "disconnected"
+    },
+    "label": {
+      "name": "Name",
+      "topic": "Topic"
+    }
+  },
+  "mqtt": {
+    "label": {
+      "broker": "Broker",
+      "qos": "qos"
+    }
+  }
+}

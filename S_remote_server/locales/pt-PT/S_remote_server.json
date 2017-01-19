@@ -1,0 +1,26 @@
+{
+  "direccao_vento": {
+    "message1": "Primeira Mensagem!",
+    "message2": "Segunda Mensagem!"
+  },
+  "common": {
+    "status": {
+      "connected": "connected",
+      "disconnected": "disconnected"
+    },
+    "label": {
+      "name": "Name",
+      "topic": "Topic"
+    }
+  },
+  "mqtt": {
+    "label": {
+      "broker": "Broker",
+      "qos": "qos",
+      "port": "Port"
+    },
+    "tabs-label": {
+      "connection": "Connection"
+    }
+  }
+}

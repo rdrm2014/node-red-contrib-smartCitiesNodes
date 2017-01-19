@@ -1,0 +1,95 @@
+<script type="text/javascript">
+    RED.nodes.registerType('S_remote-server',{
+        category: 'config',
+        defaults: {
+            broker: {value:"127.0.0.1",required:true},
+            port: {value:1883,required:true,validate:RED.validators.number()},
+            //tls: {type:"tls-config",required: false},
+            clientid: {value:"", validate: function(v) {
+                if ($("#node-config-input-clientid").length) {
+                    // Currently editing the node
+                    return $("#node-config-input-cleansession").is(":checked") || (v||"").length > 0;
+                } else {
+                    return (this.cleansession===undefined || this.cleansession) || (v||"").length > 0;
+                }
+            }},
+            //usetls: {value: false},
+            verifyservercert: { value: false},
+            compatmode: { value: true},
+            keepalive: {value:60,validate:RED.validators.number()},
+            cleansession: {value: true},
+            willTopic: {value:""},
+            willQos: {value:"0"},
+            willRetain: {value:false},
+            willPayload: {value:""},
+            birthTopic: {value:""},
+            birthQos: {value:"0"},
+            birthRetain: {value:false},
+            birthPayload: {value:""}
+        },
+        /*credentials: {
+            user: {type:"text"},
+            password: {type: "password"}
+        },*/
+        label: function() {
+            var b = this.broker;
+            //if (b === "") { b = "undefined"; }
+            if (b === "") { b = "undefined"; }
+            return (this.clientid?this.clientid+"@":"")+b+":"+this.port;
+        },
+        oneditprepare: function () {
+            var tabs = RED.tabs.create({
+                id: "node-config-remote-server-tabs",
+                onchange: function(tab) {
+                    $("#node-config-remote-server-tabs-content").children().hide();
+                    $("#" + tab.id).show();
+                }
+            });
+            tabs.addTab({
+                id: "remote-server-tab-connection",
+                label: this._("mqtt.tabs-label.connection")
+            });
+
+            var node = this;
+            function updateClientId() {
+                if ($("#node-config-input-cleansession").is(":checked")) {
+                    $("#node-config-input-clientid").attr("placeholder",node._("mqtt.placeholder.clientid"));
+                } else {
+                    $("#node-config-input-clientid").attr("placeholder",node._("mqtt.placeholder.clientid-nonclean"));
+                }
+                $("#node-config-input-clientid").change();
+            }
+            setTimeout(updateClientId,0);
+            $("#node-config-input-cleansession").on("click",function() {
+                updateClientId();
+            });
+        },
+        oneditsave: function() {
+
+        }
+    });
+</script>
+
+
+<script type="text/x-red" data-template-name="S_remote-server">
+    <div class="form-row">
+        <ul style="background: #fff; min-width: 600px; margin-bottom: 20px;" id="node-config-remote-server-tabs"></ul>
+    </div>
+    <div id="node-config-remote-server-tabs-content" style="min-height: 170px;">
+        <div id="remote-server-tab-connection" style="display:none">
+            <div class="form-row node-input-broker">
+                <label for="node-config-input-broker"><i class="fa fa-globe"></i> <span data-i18n="mqtt.label.broker"></span></label>
+                <input class="input-append-left" type="text" id="node-config-input-broker" placeholder="e.g. localhost" style="width: 40%;" >
+                <label for="node-config-input-port" style="margin-left: 10px; width: 35px; "> <span data-i18n="mqtt.label.port"></span></label>
+                <input type="text" id="node-config-input-port" data-i18n="[placeholder]mqtt.label.port" style="width:45px">
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="S_remote-server">
+    <p>A minimum MQTT broker connection requires only a broker server address to be added to the default configuration.</p>
+    <p>To secure the connection with SSL/TLS, a TLS Configuration must also be configured and selected.</p>
+    <p>If you create a Client ID it must be unique to the broker you are connecting to.</p>
+    <p>For more information about MQTT see the <a href="http://www.eclipse.org/paho/" target="_blank">Eclipse Paho</a> site.</p>
+</script>

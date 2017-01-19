@@ -1,0 +1,52 @@
+<script type="text/x-red" data-template-name="S_no2">
+   <div class="form-row">
+        <label for="node-input-waspId"><i class="fa fa-globe"></i> <span data-i18n="S_no2.waspId"></span></label>
+        <select id="node-input-waspId">
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-broker"><i class="fa fa-globe"></i> <span data-i18n="mqtt.label.broker"></span></label>
+        <input type="text" id="node-input-broker">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('S_no2', {
+        category: 'SmartCities',
+        color: "#FA7921",
+        defaults: {
+            waspId: {value: ""},
+            //sensorId: {value: ""},
+            name: {value: ""},
+            broker: {type: "S_remote-server", required: true}
+        },
+        inputs: 0,
+        outputs: 1,
+        icon: "S_no2.png",
+        label: function () {
+            return this.name || this.topic || "S_no2";
+        },
+        labelStyle: function () {
+            return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare: function () {
+            var waspId = this.waspId;
+            $.ajax({
+                url: "http://" + location.host + "/peers?json=true", success: function (result) {
+                    $.each(result, function (i, item) {
+                        //console.log(item);
+                        $('#node-input-waspId').append($('<option>', {
+                            value: item.name,
+                            text: item.description
+                        }));
+                    });
+                    $("#node-input-waspId").val(waspId);
+                }
+            });
+        }
+    });
+</script>

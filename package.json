@@ -1,0 +1,36 @@
+{
+  "name": "node-red-contrib-smartCitiesNodes",
+  "version": "0.0.1",
+  "description": "A smart Cities nodes for node-red",
+  "appKey": "0",
+  "dependencies": {
+    "is-utf8": "^0.2.1",
+    "mqtt": "^1.13.0"
+  },
+  "keywords": [
+    "node-red"
+  ],
+  "node-red": {
+    "nodes": {
+      "S_remote_server": "S_remote_server/S_remote_server.js",
+
+      "S_humidade_ar": "S_humidade_ar/S_humidade_ar.js",
+      "S_humidade_solo": "S_humidade_solo/S_humidade_solo.js",
+      "S_pluviosidade": "S_pluviosidade/S_pluviosidade.js",
+      "S_radiacaoSolar": "S_radiacaoSolar/S_radiacaoSolar.js",
+      "S_temperatura_ar": "S_temperatura_ar/S_temperatura_ar.js",
+      "S_temperatura_solo": "S_temperatura_solo/S_temperatura_solo.js",
+      "S_direccao_vento": "S_direccao_vento/S_direccao_vento.js",
+      "S_velocidade_vento": "S_velocidade_vento/S_velocidade_vento.js",
+      "S_ldr": "S_ldr/S_ldr.js",
+      "S_poeira": "S_poeira/S_poeira.js",
+      "S_ultrassom": "S_ultrassom/S_ultrassom.js",
+      "S_pressao": "S_pressao/S_pressao.js",
+
+      "S_no2": "S_no2/S_no2.js",
+      "S_co2": "S_co2/S_co2.js",
+      "S_co": "S_co/S_co.js"
+
+    }
+  }
+}
