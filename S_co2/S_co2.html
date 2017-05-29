@@ -1,9 +1,13 @@
 <script type="text/x-red" data-template-name="S_co2">
     <div class="form-row">
+        <label for="node-input-topic"><i class="fa fa-tasks"></i> <span data-i18n="common.label.topic"></span></label>
+        <input type="text" id="node-input-topic" data-i18n="[placeholder]common.label.topic">
+    </div>
+    <!--<div class="form-row">
         <label for="node-input-waspId"><i class="fa fa-globe"></i> <span data-i18n="S_co2.waspId"></span></label>
         <select id="node-input-waspId">
         </select>
-    </div>
+    </div>-->
     <div class="form-row">
         <label for="node-input-broker"><i class="fa fa-globe"></i> <span data-i18n="mqtt.label.broker"></span></label>
         <input type="text" id="node-input-broker">
@@ -21,6 +25,11 @@
         defaults: {
             waspId: {value: ""},
             //sensorId: {value: ""},
+            topic: {
+                value: "",
+                required: true,
+                validate: RED.validators.regex(/^(#$|(\+|[^+#]*)(\/(\+|[^+#]*))*(\/(\+|#|[^+#]*))?$)/)
+            },
             name: {value: ""},
             broker: {type: "S_remote-server", required: true}
         },

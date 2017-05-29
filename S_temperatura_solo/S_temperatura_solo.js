@@ -4,7 +4,7 @@ module.exports = function(RED) {
     var util = require("util");
     var isUtf8 = require('is-utf8');
 
-    function Temperatura_soloNode(n) {
+    function S_Temperatura_soloNode(n) {
         RED.nodes.createNode(this,n);
         this.topic = n.topic;
         this.qos = parseInt(n.qos);
@@ -46,7 +46,7 @@ module.exports = function(RED) {
             this.error(RED._("mqtt.errors.missing-config"));
         }
     }
-    RED.nodes.registerType("S_temperatura_solo",Temperatura_soloNode);
+    RED.nodes.registerType("S_temperatura_solo",S_Temperatura_soloNode);
 };
 //
 //module.exports = function(RED) {

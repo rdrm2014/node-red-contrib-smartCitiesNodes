@@ -1,7 +1,17 @@
 {
   "direccao_vento": {
     "message1": "Primeira Mensagem!",
-    "message2": "Segunda Mensagem!"
+    "message2": "Segunda Mensagem!",
+    "common": {
+      "status": {
+        "connected": "connected",
+        "disconnected": "disconnected"
+      },
+      "label": {
+        "name": "Name",
+        "topic": "Topic"
+      }
+    }
   },
   "common": {
     "status": {

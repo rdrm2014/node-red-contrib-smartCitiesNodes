@@ -12,8 +12,8 @@ module.exports = function (RED) {
         this.waspId = n.waspId;
         this.dataType = "no2";
 
-        this.topic = "Final/" + this.appKey + "/" + this.waspId + "/Sensor/" + this.dataType;
-
+        //this.topic = "Final/" + this.appKey + "/" + this.waspId + "/Sensor/" + this.dataType;
+        this.topic = n.topic;
         this.qos = 2;
         this.broker = n.broker;
         this.brokerConn = RED.nodes.getNode(this.broker);

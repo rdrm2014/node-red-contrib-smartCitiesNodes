@@ -5,15 +5,15 @@ module.exports = function (RED) {
     var isUtf8 = require('is-utf8');
     var config = require('../package.json');
 
-    function CO2Node(n) {
+    function S_CO2Node(n) {
         RED.nodes.createNode(this, n);
 
         this.appKey = config.appKey;
         this.waspId = n.waspId;
         this.dataType = "co2";
 
-        this.topic = "Final/" + this.appKey + "/" + this.waspId + "/Sensor/" + this.dataType;
-
+        //this.topic = "Final/" + this.appKey + "/" + this.waspId + "/Sensor/" + this.dataType;
+        this.topic = n.topic;
         this.qos = 2;
         this.broker = n.broker;
         this.brokerConn = RED.nodes.getNode(this.broker);
@@ -54,5 +54,5 @@ module.exports = function (RED) {
         }
     }
 
-    RED.nodes.registerType("S_co2", CO2Node);
+    RED.nodes.registerType("S_co2", S_CO2Node);
 };

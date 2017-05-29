@@ -5,7 +5,7 @@ module.exports = function (RED) {
     var isUtf8 = require('is-utf8');
     var config = require('../package.json');
 
-    function CONode(n) {
+    function S_CONode(n) {
         RED.nodes.createNode(this, n);
 
         this.appKey = config.appKey;
@@ -54,5 +54,5 @@ module.exports = function (RED) {
         }
     }
 
-    RED.nodes.registerType("S_co", CONode);
+    RED.nodes.registerType("S_co", S_CONode);
 };

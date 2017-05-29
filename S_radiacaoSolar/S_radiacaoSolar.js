@@ -4,7 +4,7 @@ module.exports = function(RED) {
     var util = require("util");
     var isUtf8 = require('is-utf8');
 
-    function RadiacaoSolarNode(n) {
+    function S_RadiacaoSolarNode(n) {
         RED.nodes.createNode(this,n);
         this.topic = n.topic;
         this.qos = parseInt(n.qos);
@@ -46,7 +46,7 @@ module.exports = function(RED) {
             this.error(RED._("mqtt.errors.missing-config"));
         }
     }
-    RED.nodes.registerType("S_radiacaoSolar",RadiacaoSolarNode);
+    RED.nodes.registerType("S_radiacaoSolar",S_RadiacaoSolarNode);
 };
 //
 //module.exports = function(RED) {

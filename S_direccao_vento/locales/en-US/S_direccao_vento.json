@@ -1,7 +1,17 @@
 {
-  "direccao_vento": {
+  "S_direccao_vento": {
     "message1": "This is my first message",
-    "message2": "This is my second message"
+    "message2": "This is my second message",
+    "common": {
+      "status": {
+        "connected": "connected",
+        "disconnected": "disconnected"
+      },
+      "label": {
+        "name": "Name",
+        "topic": "Topic"
+      }
+    }
   },
   "common": {
     "status": {
